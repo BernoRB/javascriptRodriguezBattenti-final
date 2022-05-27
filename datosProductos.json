@@ -1,0 +1,58 @@
+{
+  "productos" : [
+    {
+       "id": 1,
+       "numProducto": 1,
+       "nombre": "Internet 30mb",
+       "precio": 1900
+    },
+    {
+      "id": 2,
+      "numProducto": 1,
+      "nombre": "Internet 100mb",
+      "precio": 2600
+   },
+   {
+      "id": 3,
+      "numProducto": 1,
+      "nombre": "Internet 200mb",
+      "precio": 3500
+   },
+   {
+      "id": 4,
+      "numProducto": 2,
+      "nombre": "Sólo Streaming",
+      "precio": 700
+   },
+   {
+      "id": 5,
+      "numProducto": 2,
+      "nombre": "Sólo TV Satelital",
+      "precio": 2200
+   },
+   {
+      "id": 6,
+      "numProducto": 2,
+      "nombre": "TV + Streaming",
+      "precio": 2600
+   },
+   {
+      "id": 7,
+      "numProducto": 3,
+      "nombre": "Línea 3gb datos",
+      "precio": 900
+   },
+   {
+      "id": 8,
+      "numProducto": 3,
+      "nombre": "Línea 8gb datos",
+      "precio": 1700
+   },
+   {
+      "id": 9,
+      "numProducto": 3,
+      "nombre": "Línea 15gb datos",
+      "precio": 3200
+   }
+  ]
+}

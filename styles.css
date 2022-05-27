@@ -1,5 +1,96 @@
-.centrar {
+/* Estilos generales / index */
+body {
+        background: #ffffff;
+}
+
+.vertical-center {
+        height: 100vh;
+        width: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+}
+
+/* Estilos de Eleccion de Producto */
+.cardProducto {
+        margin-top: 25%;
+        width: 300px;
+}
+
+.card-img-top {
+        width: 200px;
+        height: 200px;
+}
+
+/* Estilos de Resultados */
+.rowRdos {
+        margin: 3% 15%;
+}
+
+/* Estilos Memotest */
+#botonInicio {
+        margin: auto;
+}
+
+.contenedor-juego {
+        height: 100vh;
+        width: 100vh;
+        display: flex;
+        margin: auto;
+}
+
+.juego-memoria {
+        width: 640px;
+        height: 640px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+.tarjeta-ind {
+        width: calc(25% - 10px);
+        height: calc(25% - 10px);
+        margin: 5px;
+        position: relative;
+        transform: scale(1);
+        transform-style: preserve-3d;
+        transition: transform 1s;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.tarjeta-ind.volteada {
+        transform: rotateY(180deg);
+}
+
+.frente,
+.trasera {
+        background: #7f91a0;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        position: absolute;
+        border-radius: 5px;
+        backface-visibility: hidden;
+}
+
+.frente {
+        transform: rotateY(180deg);
+}
+
+/* Eleccion Producto */
+.cardProducto {
+        margin-top: 25%;
+        width: 300px;
+}
+
+.card-img-top {
+        width: 200px;
+        height: 200px;
+}
+
+/* Resultados */
+.rowRdos {
+        margin: 3% 15%;
 }
