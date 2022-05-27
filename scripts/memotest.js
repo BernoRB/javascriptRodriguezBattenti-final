@@ -8,6 +8,8 @@ let rtasCorrectas = 0
 let segundos = 0
 let tiempoFinal = 0
 let puntaje = 0
+const sonidoError = new Audio('./audio/Error.wav');
+const sonidoAcierto = new Audio('./audio/Acierto.wav');
 const tarjetas = document.querySelectorAll('.tarjeta-ind')
 
 // Click iniciar juego
@@ -89,12 +91,13 @@ function desVoltearTarjetas() {
 }
 
 
-// Conteo de puntaje
+// Conteo de puntaje + Sonido acierto/error
 function sumarPuntos() {
     puntaje += 3
     setTimeout(() => { //con delay asi coincide más o menos con la animación de volteada
         document.getElementById('seccionPuntaje').innerHTML = "Puntaje: " + puntaje
     }, 1000);
+    sonidoAcierto.play()
     rtasCorrectas++
     if (rtasCorrectas == 6)
         terminoJuego()
@@ -106,6 +109,7 @@ function restarPuntos() {
     setTimeout(() => {
         document.getElementById('seccionPuntaje').innerHTML = "Puntaje: " + puntaje
     }, 1000);
+    sonidoError.play()
 }
 
 // Cronometro
