@@ -4,7 +4,6 @@ mail = localStorage.getItem('mail')
 puntajeObtenido = localStorage.getItem('puntajeObtenido')
 segundosTardados = localStorage.getItem('segundosTardados')
 idProducto = localStorage.getItem('idProducto')
-console.log(segundosTardados)
 
 // Mostramos los resultados
 function muestraRdos() {
@@ -28,7 +27,7 @@ fetch("../datosProductos.json")
     console.log(json)
     productos = json.productos
 
-    // De todos los productos del JSON muestra sólo los del servicio que le interesó en un principio
+    // De todos los productos del JSON muestra sólo los del id servicio que le interesó en un principio
     for (i=0; i<productos.length; i++)
         if (productos[i].numProducto == idProducto)
             mostrarProductos(productos[i])

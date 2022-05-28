@@ -127,6 +127,7 @@ function terminoJuego() {
     document.getElementById('botonAvanzar').style.display = "flex"
     document.getElementById('botonReglas').style.display = "none"
     document.getElementById('botonInicio').style.display = "none"
+
     // Guardamos en storage
     localStorage.setItem('puntajeObtenido', puntaje)
     localStorage.setItem('segundosTardados', segundos)
