@@ -12,11 +12,23 @@ const sonidoError = new Audio('./audio/Error.wav');
 const sonidoAcierto = new Audio('./audio/Acierto.wav');
 const tarjetas = document.querySelectorAll('.tarjeta-ind')
 
+// Alerta reglas
+document.getElementById('botonReglas').addEventListener('click', alertaReglas)
+
+function alertaReglas() {
+    Swal.fire(
+        'REGLAS',
+        'Al hacer click en INICIAR JUEGO se mostrarán las cartas por unos segundos. Luego tenés que adivinar los pares. Por cada acierto sumás 3 puntos, por cada error restás 1. ¡Buena suerte!',
+        'question'
+    )
+}
+
 // Click iniciar juego
 document.getElementById('botonInicio').addEventListener('click', iniciarJuego)
 
 function iniciarJuego() {
-    if (yaInicio) return // Si presiona 'iniciar' más de una vez, que no tenga efecto
+    // Si presiona 'iniciar' más de una vez, que no tenga efecto
+    if (yaInicio) return
     yaInicio = true
 
     // Mezclamos las tarjetas y las mostramos unos segundos
@@ -33,8 +45,8 @@ function iniciarJuego() {
 // Mezclo (recorremos y les asignamos un número random a la propiedad order)
 function mezclarTarjetas() {
     tarjetas.forEach(tarjeta => {
-        tarjeta.style.order = Math.floor(Math.random() * 12);;
-    });
+        tarjeta.style.order = Math.floor(Math.random() * 12)
+    })
 }
 
 // Muestra las imagenes unos segundos y luego las vuelve a ocultar
@@ -70,7 +82,7 @@ function verCoincidencia() {
         sumarPuntos()
     } else { // Si no hay acierto, las desvolteamos y restamos puntos
         desVoltearTarjetas()
-        restarPuntos() 
+        restarPuntos()
     }
 }
 
@@ -127,6 +139,13 @@ function terminoJuego() {
     document.getElementById('botonAvanzar').style.display = "flex"
     document.getElementById('botonReglas').style.display = "none"
     document.getElementById('botonInicio').style.display = "none"
+
+    // Disparamos notificación para que sepa que terminó
+    Toastify({
+        text: "¡Bien!",
+        duration: 5000,
+        gravity: "bottom",      
+    }).showToast();
 
     // Guardamos en storage
     localStorage.setItem('puntajeObtenido', puntaje)

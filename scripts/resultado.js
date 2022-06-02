@@ -12,33 +12,36 @@ function muestraRdos() {
     document.getElementById('rdosTitulo').innerHTML = `Felicitaciones ${nombre}`
     rdosBonus = document.getElementById('rdosBonus')
 
-    rdosBonus.innerHTML =  segundosTardados < 20 ? "Y como tardaste menos de 20 segundos, te llevás de regalo un TERMO"
-                        :  segundosTardados < 30 ? "Y como tardaste menos de 30 segundos, te llevás de regalo una BOTELLA TERMICA"
-                        :  segundosTardados < 60 ? "Y como tardaste menos de 60 segundos, te llevás de regalo una GORRA"
-                        : ""
+    rdosBonus.innerHTML = segundosTardados < 20 ? "Y como tardaste menos de 20 segundos, te llevás de regalo un TERMO"
+        : segundosTardados < 30 ? "Y como tardaste menos de 30 segundos, te llevás de regalo una BOTELLA TERMICA"
+            : segundosTardados < 60 ? "Y como tardaste menos de 60 segundos, te llevás de regalo una GORRA"
+                : ""
+    traigoProductos()
 }
 
 muestraRdos()
 
-// Traemos los productos del JSON, aplicamos precio con descuento, mostramos, renderizamos en el html
-fetch("../datosProductos.json")
-  .then(res => res.json())
-  .then(json => {
-    console.log(json)
-    productos = json.productos
+// Traigo productos del JSON
+async function traigoProductos() {
+    const response = await fetch('../datosProductos.json')
+    if (!response.ok)
+        throw new Error(`Error! status: ${response.status}`);
+    const data = await response.json()
+    productos = data.productos
 
-    // De todos los productos del JSON muestra sólo los del id servicio que le interesó en un principio
-    for (i=0; i<productos.length; i++)
+    // De todos los productos del JSON muestro sólo los del id servicio que le interesó en un principio
+    for (i = 0; i < productos.length; i++)
         if (productos[i].numProducto == idProducto)
             mostrarProductos(productos[i])
-  })
+}
+
 
 elem = document.getElementById('contenedorProductosOfrecidos')
 
 // Renderizamos los productos, del servicio que elijió originalmente, con el precio en función de su descuento
-function mostrarProductos(producto){
+function mostrarProductos(producto) {
     precioOriginal = producto.precio
-    precioDesc = Math.round(precioOriginal * (1 - ((puntajeObtenido*2)/100)))
+    precioDesc = Math.round(precioOriginal * (1 - ((puntajeObtenido * 2) / 100)))
     productoNombre = producto.nombre
     htmlProductoOf = `
     <div class="col-4">
