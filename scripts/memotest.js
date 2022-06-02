@@ -142,9 +142,10 @@ function terminoJuego() {
 
     // Disparamos notificación para que sepa que terminó
     Toastify({
-        text: "¡Bien!",
+        text: '¡Bien!',
         duration: 5000,
-        gravity: "bottom",      
+        gravity: 'bottom',
+        destination: 'resultado.html'     
     }).showToast();
 
     // Guardamos en storage
